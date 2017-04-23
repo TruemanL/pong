@@ -1,10 +1,13 @@
 package Model;
 
+import java.awt.*;
+
 /**
- * Created by c2a1b on 2017-04-22.
+ * Created by Trueman on 2017-04-22.
  */
 public class Ball {
-    private static int RADIUS = 1;
+    public static final Color COLOR = new Color(0,0,0);
+    public static int DIAMETER = 20;
     private int x;
     private int y;
     private int dy;

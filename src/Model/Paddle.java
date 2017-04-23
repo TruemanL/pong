@@ -1,11 +1,14 @@
 package Model;
 
+import java.awt.*;
+
 /**
- * Created by c2a1b on 2017-04-22.
+ * Created by Trueman on 2017-04-22.
  */
 public class Paddle {
-    private static int WIDTH = 2;
-    private static int HEIGHT = 10;
+    public static final Color COLOR = new Color(0,0,0);
+    public static int WIDTH = 20;
+    public static int HEIGHT = 100;
     private static int SPEED = 5;
     private int x;
     private int y;
