@@ -1,5 +1,8 @@
 package Model;
 
+import java.awt.event.KeyEvent;
+
+import static Model.Direction.DOWN;
 import static Model.Direction.UP;
 
 /**
@@ -27,6 +30,23 @@ public class PongGame {
         p1.move();
         p2.move();
         ball.move();
+    }
+
+    public void keyPressed(int keyCode) {
+        switch (keyCode) {
+            case KeyEvent.VK_UP:
+                p2.changeDirection(UP);
+                break;
+            case KeyEvent.VK_DOWN:
+                p2.changeDirection(DOWN);
+                break;
+            case KeyEvent.VK_W:
+                p1.changeDirection(UP);
+                break;
+            case KeyEvent.VK_S:
+                p1.changeDirection(DOWN);
+                break;
+        }
     }
 
     public Paddle getPaddle1() {return p1;}

@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  * Created by Trueman on 2017-04-22.
@@ -25,6 +27,8 @@ public class GamePanel extends JPanel {
         setBackground(Color.gray);
         this.pg = new PongGame();
         addTimer();
+        setFocusable(true);
+        addKeyListener(new KeyHandler());
     }
 
     // initialize a timer to update the game every INTERVAL milliseconds
@@ -37,6 +41,12 @@ public class GamePanel extends JPanel {
         });
 
         timer.start();
+    }
+
+    // key handler to handle key events
+    private class KeyHandler extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) { pg.keyPressed(e.getKeyCode());}
     }
 
     @Override
