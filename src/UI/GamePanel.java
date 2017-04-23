@@ -57,8 +57,8 @@ public class GamePanel extends JPanel {
         Paddle p2 = pg.getPaddle2();
         Color savedCol = g.getColor();
         g.setColor(Paddle.COLOR);
-        g.fillRect(p1.getX(), p1.getY(), Paddle.WIDTH, Paddle.HEIGHT);
-        g.fillRect(p2.getX(), p2.getY(), Paddle.WIDTH, Paddle.HEIGHT);
+        g.fillRect(p1.getDisplayX(), p1.getDisplayY(), Paddle.WIDTH, Paddle.HEIGHT);
+        g.fillRect(p2.getDisplayX(), p2.getDisplayY(), Paddle.WIDTH, Paddle.HEIGHT);
         g.setColor(savedCol);
     }
 

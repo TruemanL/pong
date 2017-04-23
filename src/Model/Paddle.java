@@ -38,6 +38,10 @@ public class Paddle {
 
     public int getX() {return x;}
     public int getY() {return y;}
+
+    public int getDisplayX() {return x - WIDTH/2;}
+    public int getDisplayY() {return y - HEIGHT/2;}
+
     public int getSpeed() {return SPEED;}
     public Direction getDirection() {return dir;}
 

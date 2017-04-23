@@ -27,6 +27,10 @@ public class Ball {
 
     public int getX() {return x;}
     public int getY() {return y;}
+
+    public int getDisplayX() {return x - DIAMETER/2;}
+    public int getDisplayY() {return y - DIAMETER/2;}
+
     public int getDX() {return dx;}
     public int getDY() {return dy;}
 

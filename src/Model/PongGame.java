@@ -8,7 +8,7 @@ import static Model.Direction.UP;
 public class PongGame {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 600;
-    public static final int BUFFER_SPACE = 10;
+    public static final int BUFFER_SPACE = 20;
 
     private Paddle p1;
     private Paddle p2;
