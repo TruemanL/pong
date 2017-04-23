@@ -24,7 +24,7 @@ public class GamePanel extends JPanel {
         setPreferredSize(new Dimension(PongGame.WIDTH, PongGame.HEIGHT));
         setBackground(Color.gray);
         this.pg = new PongGame();
-
+        addTimer();
     }
 
     // initialize a timer to update the game every INTERVAL milliseconds
@@ -66,7 +66,7 @@ public class GamePanel extends JPanel {
         Ball b = pg.getBall();
         Color savedCol = g.getColor();
         g.setColor(Ball.COLOR);
-        g.fillOval(b.getX(), b.getY(), Ball.DIAMETER, Ball.DIAMETER);
+        g.fillOval(b.getDisplayX(), b.getDisplayY(), Ball.DIAMETER, Ball.DIAMETER);
         g.setColor(savedCol);
     }
 

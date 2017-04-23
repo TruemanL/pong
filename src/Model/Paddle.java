@@ -22,18 +22,27 @@ public class Paddle {
 
     public void move() {
         switch (dir) {
-            case UP: y += SPEED;
+            case UP: y -= SPEED;
             break;
-            case DOWN: y -= SPEED;
+            case DOWN: y += SPEED;
             break;
             case LEFT: x -= SPEED;
             break;
             case RIGHT: x += SPEED;
         }
+        checkBounds();
     }
 
     public void changeDirection(Direction d) {
         dir = d;
+    }
+
+    private void checkBounds() {
+        if (y - HEIGHT/2 < 0) {
+            y = HEIGHT/2;
+        } else if (y + HEIGHT/2 > PongGame.HEIGHT) {
+            y = PongGame.HEIGHT - HEIGHT/2;
+        }
     }
 
     public int getX() {return x;}

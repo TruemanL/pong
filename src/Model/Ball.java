@@ -23,6 +23,15 @@ public class Ball {
     public void move() {
         x += dx;
         y += dy;
+        checkBounds();
+    }
+
+    private void checkBounds() {
+        if (y - DIAMETER/2 < 0) {
+            dy = -dy;
+        } else if (y + DIAMETER/2 > PongGame.HEIGHT) {
+            dy = -dy;
+        }
     }
 
     public int getX() {return x;}
