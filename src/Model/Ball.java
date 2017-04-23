@@ -26,6 +26,10 @@ public class Ball {
         checkBounds();
     }
 
+    public void bounce() {
+        dx = -dx;
+    }
+
     private void checkBounds() {
         if (y - DIAMETER/2 < 0) {
             dy = -dy;
