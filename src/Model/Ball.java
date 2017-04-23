@@ -1,10 +1,13 @@
 package Model;
 
+import java.awt.*;
+
 /**
- * Created by c2a1b on 2017-04-22.
+ * Created by Trueman on 2017-04-22.
  */
 public class Ball {
-    private static int RADIUS = 1;
+    public static final Color COLOR = new Color(0,0,0);
+    public static int DIAMETER = 20;
     private int x;
     private int y;
     private int dy;
@@ -20,10 +23,23 @@ public class Ball {
     public void move() {
         x += dx;
         y += dy;
+        checkBounds();
+    }
+
+    private void checkBounds() {
+        if (y - DIAMETER/2 < 0) {
+            dy = -dy;
+        } else if (y + DIAMETER/2 > PongGame.HEIGHT) {
+            dy = -dy;
+        }
     }
 
     public int getX() {return x;}
     public int getY() {return y;}
+
+    public int getDisplayX() {return x - DIAMETER/2;}
+    public int getDisplayY() {return y - DIAMETER/2;}
+
     public int getDX() {return dx;}
     public int getDY() {return dy;}
 
