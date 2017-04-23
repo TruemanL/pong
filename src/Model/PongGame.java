@@ -7,6 +7,7 @@ import static Model.Direction.UP;
 
 /**
  * Created by Trueman on 2017-04-22.
+ * A Pong Game.
  */
 public class PongGame {
     public static final int WIDTH = 1000;
@@ -30,6 +31,7 @@ public class PongGame {
         p1.move();
         p2.move();
         ball.move();
+        checkCollision();
     }
 
     public void keyPressed(int keyCode) {
@@ -47,6 +49,25 @@ public class PongGame {
                 p1.changeDirection(DOWN);
                 break;
         }
+    }
+
+    private void checkCollision() {
+        if (sameX(ball, p1) && sameY(ball, p1))
+            ball.bounce();
+        if (sameX(ball, p2) && sameY(ball, p2))
+            ball.bounce();
+    }
+
+    private boolean sameX(Ball b, Paddle p) {
+        return ((b.getX() - Ball.DIAMETER/2 == p.getX() + Paddle.WIDTH/2) ||
+                (b.getX() + Ball.DIAMETER/2 == p.getX() - Paddle.WIDTH/2));
+    }
+
+    private boolean sameY(Ball b, Paddle p) {
+        int bY = b.getY();
+        int pY = p.getY();
+
+        return ((bY <= pY + Paddle.HEIGHT/2) && bY >= pY - Paddle.HEIGHT/2);
     }
 
     public Paddle getPaddle1() {return p1;}
