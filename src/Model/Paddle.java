@@ -1,13 +1,11 @@
 package Model;
 
-import Physics.Movable;
-
 import java.awt.*;
 
 /**
  * Created by Trueman on 2017-04-22.
  */
-public class Paddle extends Sprite implements Movable {
+public class Paddle extends Sprite {
     public static final Color COLOR = new Color(0,0,0);
 
     private static int SPEED = 5;
