@@ -5,17 +5,14 @@ import java.awt.*;
 /**
  * Created by Trueman on 2017-04-22.
  */
-public class Ball {
+public class Ball extends Sprite {
     public static final Color COLOR = new Color(0,0,0);
-    public static int DIAMETER = 20;
-    private int x;
-    private int y;
+
     private int dy;
     private int dx;
 
-    public Ball(int x, int y, int dy, int dx) {
-        this.x = x;
-        this.y = y;
+    public Ball(int x, int y, int width, int height, int dy, int dx) {
+        super(x, y, width, height);
         this.dx = dx;
         this.dy = dy;
     }
@@ -31,18 +28,12 @@ public class Ball {
     }
 
     private void checkBounds() {
-        if (y - DIAMETER/2 < 0) {
+        if (y - height/2 < 0) {
             dy = -dy;
-        } else if (y + DIAMETER/2 > PongGame.HEIGHT) {
+        } else if (y + height/2 > PongGame.HEIGHT) {
             dy = -dy;
         }
     }
-
-    public int getX() {return x;}
-    public int getY() {return y;}
-
-    public int getDisplayX() {return x - DIAMETER/2;}
-    public int getDisplayY() {return y - DIAMETER/2;}
 
     public int getDX() {return dx;}
     public int getDY() {return dy;}

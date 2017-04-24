@@ -89,7 +89,7 @@ public class GamePanel extends JPanel {
         Ball b = pg.getBall();
         Color savedCol = g.getColor();
         g.setColor(Ball.COLOR);
-        g.fillOval(b.getDisplayX(), b.getDisplayY(), Ball.DIAMETER, Ball.DIAMETER);
+        g.fillOval(b.getDisplayX(), b.getDisplayY(), b.getWidth(), b.getHeight());
         g.setColor(savedCol);
     }
 

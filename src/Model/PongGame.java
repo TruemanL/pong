@@ -2,9 +2,7 @@ package Model;
 
 import java.awt.event.KeyEvent;
 
-import static Model.Direction.DOWN;
-import static Model.Direction.STOP;
-import static Model.Direction.UP;
+import static Model.Direction.*;
 
 /**
  * Created by Trueman on 2017-04-22.
@@ -17,6 +15,7 @@ public class PongGame {
     public static final int WALL_THICKNESS = 10;
     public static int paddleWidth = 20;
     public static int paddleHeight = 100;
+    public static int ballDiameter = 20;
 
     private Paddle p1;
     private Paddle p2;
@@ -30,7 +29,7 @@ public class PongGame {
     public PongGame() {
         p1 = new Paddle(BUFFER_SPACE,HEIGHT/2, paddleWidth, paddleHeight, STOP);
         p2 = new Paddle(WIDTH - BUFFER_SPACE, HEIGHT/2, paddleWidth, paddleHeight, STOP);
-        ball = new Ball(WIDTH/2, HEIGHT/2, initialDX, initialDY);
+        ball = new Ball(WIDTH/2, HEIGHT/2, ballDiameter, ballDiameter, initialDX, initialDY);
         topWall = new Wall(WIDTH/2, WALL_THICKNESS/2, WIDTH, WALL_THICKNESS);
         botWall = new Wall(WIDTH/2, HEIGHT - WALL_THICKNESS/2, WIDTH, WALL_THICKNESS);
     }
@@ -71,8 +70,8 @@ public class PongGame {
     }
 
     private boolean sameX(Ball b, Paddle p) {
-        return ((b.getX() - Ball.DIAMETER/2 == p.getX() + p.getWidth()/2) ||
-                (b.getX() + Ball.DIAMETER/2 == p.getX() - p.getWidth()/2));
+        return ((b.getX() - b.getWidth()/2 == p.getX() + p.getWidth()/2) ||
+                (b.getX() + b.getWidth()/2 == p.getX() - p.getWidth()/2));
     }
 
     private boolean sameY(Ball b, Paddle p) {
