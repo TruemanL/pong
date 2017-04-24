@@ -5,7 +5,7 @@ import Physics.Collidable;
 /**
  * Created by Trueman on 2017-04-23.
  */
-public abstract class Sprite implements Collidable {
+public class Sprite implements Collidable {
     protected int width;
     protected int height;
     protected int x;
@@ -56,6 +56,6 @@ public abstract class Sprite implements Collidable {
 
     // returns true if point is between top and bot (inclusive)
     private boolean isBetween(int point, int top, int bot) {
-        return ((bot - TOL <= point) && (point <= top + TOL));
+        return ((bot + TOL >= point) && (point >= top - TOL));
     }
 }
