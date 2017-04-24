@@ -63,10 +63,18 @@ public class PongGame {
             p1.changeDirection(STOP);
         if ((p2.detectCollision(topWall)) || (p2.detectCollision(botWall)))
             p2.changeDirection(STOP);
-        if (sameX(ball, p1) && sameY(ball, p1))
-            ball.bounce();
-        if (sameX(ball, p2) && sameY(ball, p2))
-            ball.bounce();
+        if (ball.detectCollision(topWall))
+            ball.bounce(DOWN);
+        if (ball.detectCollision(botWall))
+            ball.bounce(UP);
+        if (ball.detectCollision(p1))
+            ball.bounce(RIGHT);
+        if (ball.detectCollision(p2))
+            ball.bounce(LEFT);
+//        if (sameX(ball, p1) && sameY(ball, p1))
+//            ball.bounce();
+//        if (sameX(ball, p2) && sameY(ball, p2))
+//            ball.bounce();
     }
 
     private boolean sameX(Ball b, Paddle p) {

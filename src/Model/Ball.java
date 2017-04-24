@@ -20,22 +20,22 @@ public class Ball extends Sprite {
     public void move() {
         x += dx;
         y += dy;
-        checkBounds();
     }
 
-    public void bounce() {
-        dx = -dx;
-    }
-
-    private void checkBounds() {
-        if (y - height/2 < 0) {
-            dy = -dy;
-        } else if (y + height/2 > PongGame.HEIGHT) {
-            dy = -dy;
+    public void bounce(Direction dir) {
+        switch (dir) {
+            case UP:
+                dy = -Math.abs(dy);
+                break;
+            case DOWN:
+                dy = Math.abs(dy);
+                break;
+            case LEFT:
+                dx = -Math.abs(dx);
+                break;
+            case RIGHT:
+                dx = Math.abs(dx);
+                break;
         }
     }
-
-    public int getDX() {return dx;}
-    public int getDY() {return dy;}
-
 }
