@@ -11,7 +11,7 @@ public class Ball extends Sprite {
     private int dy;
     private int dx;
 
-    public Ball(int x, int y, int width, int height, int dy, int dx) {
+    public Ball(int x, int y, int width, int height, int dx, int dy) {
         super(x, y, width, height);
         this.dx = dx;
         this.dy = dy;

@@ -22,16 +22,37 @@ public class PongGame {
     private Ball ball;
     private Wall topWall;
     private Wall botWall;
-    private int initialDX = (int) Math.round(Math.random()*5);
-    private int initialDY = (int) Math.round(Math.random()*5);
+    private int initialDX;
+    private int initialDY;
 
     /// creates ball and paddles
     public PongGame() {
+        newGame();
+    }
+
+    public void newGame() {
+        generateBallVelocity();
         p1 = new Paddle(BUFFER_SPACE,HEIGHT/2, paddleWidth, paddleHeight, STOP);
         p2 = new Paddle(WIDTH - BUFFER_SPACE, HEIGHT/2, paddleWidth, paddleHeight, STOP);
         ball = new Ball(WIDTH/2, HEIGHT/2, ballDiameter, ballDiameter, initialDX, initialDY);
         topWall = new Wall(WIDTH/2, WALL_THICKNESS/2, WIDTH, WALL_THICKNESS);
         botWall = new Wall(WIDTH/2, HEIGHT - WALL_THICKNESS/2, WIDTH, WALL_THICKNESS);
+    }
+
+    public void generateBallVelocity() {
+        initialDX = 0;
+        initialDY = 0;
+        while (initialDX < 2)
+            initialDX = (int) Math.round(Math.random() * 5);
+
+        if (Math.random() > 0.5)
+            initialDX = -initialDX;
+
+        while (initialDY < 2)
+            initialDY = (int) Math.round(Math.random() * 4);
+
+        if (Math.random() > 0.5)
+            initialDY = -initialDY;
     }
 
     public void update() {
@@ -58,6 +79,9 @@ public class PongGame {
             case KeyEvent.VK_S:
                 if (!p1.detectCollision(botWall))
                     p1.changeDirection(DOWN);
+                break;
+            case KeyEvent.VK_R:
+                newGame();
                 break;
         }
     }
