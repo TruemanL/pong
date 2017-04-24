@@ -35,27 +35,9 @@ public class Paddle extends Sprite {
             case STOP:
                 break;
         }
-        //checkBounds();
     }
 
     public void changeDirection(Direction d) {
         dir = d;
     }
-
-    private void checkBounds() {
-        if (y - height/2 < 0) {
-            y = height/2;
-        } else if (y + height/2 > PongGame.HEIGHT) {
-            y = PongGame.HEIGHT - height/2;
-        }
-    }
-
-    public int getSpeed() {return SPEED;}
-    public Direction getDirection() {return dir;}
-
-
-
-
-
-
 }

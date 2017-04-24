@@ -9,8 +9,8 @@ import static Model.Direction.*;
  * A Pong Game.
  */
 public class PongGame {
-    public static final int WIDTH = 1000;
-    public static final int HEIGHT = 600;
+    public static final int WIDTH = 800;
+    public static final int HEIGHT = 500;
     public static final int BUFFER_SPACE = 20;
     public static final int WALL_THICKNESS = 10;
     public static int paddleWidth = 20;
@@ -44,16 +44,20 @@ public class PongGame {
     public void keyPressed(int keyCode) {
         switch (keyCode) {
             case KeyEvent.VK_UP:
-                p2.changeDirection(UP);
+                if (!p2.detectCollision(topWall))
+                    p2.changeDirection(UP);
                 break;
             case KeyEvent.VK_DOWN:
-                p2.changeDirection(DOWN);
+                if (!p2.detectCollision(botWall))
+                    p2.changeDirection(DOWN);
                 break;
             case KeyEvent.VK_W:
-                p1.changeDirection(UP);
+                if (!p1.detectCollision(topWall))
+                    p1.changeDirection(UP);
                 break;
             case KeyEvent.VK_S:
-                p1.changeDirection(DOWN);
+                if (!p1.detectCollision(botWall))
+                    p1.changeDirection(DOWN);
                 break;
         }
     }
@@ -71,22 +75,6 @@ public class PongGame {
             ball.bounce(RIGHT);
         if (ball.detectCollision(p2))
             ball.bounce(LEFT);
-//        if (sameX(ball, p1) && sameY(ball, p1))
-//            ball.bounce();
-//        if (sameX(ball, p2) && sameY(ball, p2))
-//            ball.bounce();
-    }
-
-    private boolean sameX(Ball b, Paddle p) {
-        return ((b.getX() - b.getWidth()/2 == p.getX() + p.getWidth()/2) ||
-                (b.getX() + b.getWidth()/2 == p.getX() - p.getWidth()/2));
-    }
-
-    private boolean sameY(Ball b, Paddle p) {
-        int bY = b.getY();
-        int pY = p.getY();
-
-        return ((bY <= pY + p.getHeight()/2) && bY >= pY - p.getHeight()/2);
     }
 
     public Wall getTopWall() {return topWall;}
