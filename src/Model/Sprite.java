@@ -50,7 +50,7 @@ public class Sprite implements Collidable {
         int otherLeft = other.returnLeft();
         int otherRight = other.returnRight();
         if (isBetween(returnTop(), otherTop, otherBot) || isBetween(returnBot(), otherTop, otherBot))
-            return (isBetween(returnLeft(), otherRight, otherRight) || isBetween(returnRight(), otherLeft, otherLeft));
+            return (isBetween(returnLeft(), otherLeft, otherRight) || isBetween(returnRight(), otherLeft, otherRight));
         return false;
     }
 

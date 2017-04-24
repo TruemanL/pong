@@ -45,4 +45,9 @@ public class SpriteTest {
         assertTrue(testSpriteRef.detectCollision(testSpriteOther));
     }
 
+    @Test
+    public void detectCollisionCollideBot() {
+        testSpriteOther = new Sprite(refX, refY + refHeight, refWidth, refHeight);
+        assertTrue(testSpriteRef.detectCollision(testSpriteOther));
+    }
 }
