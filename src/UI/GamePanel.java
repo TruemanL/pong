@@ -3,6 +3,7 @@ package UI;
 import Model.Ball;
 import Model.Paddle;
 import Model.PongGame;
+import Model.Wall;
 
 import javax.swing.*;
 import java.awt.*;
@@ -57,8 +58,20 @@ public class GamePanel extends JPanel {
 
     // draw game onto g
     private void drawGame(Graphics g) {
+        drawWalls(g);
         drawPaddles(g);
         drawBall(g);
+    }
+
+    // draws walls onto g
+    private void drawWalls(Graphics g) {
+        Wall tW = pg.getTopWall();
+        Wall bW = pg.getBotWall();
+        Color savedCol = g.getColor();
+        g.setColor(Wall.COLOR);
+        g.fillRect(tW.getDisplayX(), tW.getDisplayY(), tW.getWidth(), tW.getHeight());
+        g.fillRect(bW.getDisplayX(), bW.getDisplayY(), bW.getWidth(), bW.getHeight());
+        g.setColor(savedCol);
     }
 
     // draws paddles onto g
@@ -67,8 +80,8 @@ public class GamePanel extends JPanel {
         Paddle p2 = pg.getPaddle2();
         Color savedCol = g.getColor();
         g.setColor(Paddle.COLOR);
-        g.fillRect(p1.getDisplayX(), p1.getDisplayY(), Paddle.WIDTH, Paddle.HEIGHT);
-        g.fillRect(p2.getDisplayX(), p2.getDisplayY(), Paddle.WIDTH, Paddle.HEIGHT);
+        g.fillRect(p1.getDisplayX(), p1.getDisplayY(), p1.getWidth(), p1.getHeight());
+        g.fillRect(p2.getDisplayX(), p2.getDisplayY(), p2.getWidth(), p2.getHeight());
         g.setColor(savedCol);
     }
 
@@ -76,7 +89,7 @@ public class GamePanel extends JPanel {
         Ball b = pg.getBall();
         Color savedCol = g.getColor();
         g.setColor(Ball.COLOR);
-        g.fillOval(b.getDisplayX(), b.getDisplayY(), Ball.DIAMETER, Ball.DIAMETER);
+        g.fillOval(b.getDisplayX(), b.getDisplayY(), b.getWidth(), b.getHeight());
         g.setColor(savedCol);
     }
 
